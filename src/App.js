@@ -3,9 +3,13 @@ import './App.css';
 
 
 function App() {
+  const title = "Mi Tienda"
+
   return (
-    <Navbar/>
-  );
+
+    <Navbar titulo = {title}/>
+    
+    );
 }
 
-export default App;
+      export default App;
