@@ -22,16 +22,4 @@ export default function CustomizedBadges() {
     </IconButton>
   );
 }
-// const CartWidget = () => {
-  
-//   return (
-//     <>
-//       <IconButton aria-label="cart">
-//         <StyledBadge badgeContent={4} color="secondary">
-//           <ShoppingCartIcon />
-//         </StyledBadge>
-//       </IconButton>
-//     </>
-//   );
-// }
 
