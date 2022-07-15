@@ -5,10 +5,10 @@ import { useState } from "react";
 
 
 
-export default function DisableElevation() {
+export default function ItemCount({stock}) {
 
   const [count, setCount] = useState(0);
-  let stock = 4
+  
   const contador = (operacion) => {
     if (operacion === "-" && count > 0) {
       setCount(count - 1);
