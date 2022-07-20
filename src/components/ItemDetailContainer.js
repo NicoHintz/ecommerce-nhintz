@@ -1,41 +1,51 @@
 import { Grid } from '@mui/material';
 import { useEffect, useState } from "react";
-import product from '../utils/DetailProductsMock'
+import productsMock from '../utils/productsMock'
 import Container from '@mui/material/Container';
 // import ItemList from './ItemList';
-import ItemDetailList from './Item/ItemDetail';
+import ItemDetail from './Item/ItemDetail';
 
 const ItemListContainer = () => {
+  const id = 1;
+    
+  const [item, setItem] = useState([]);
 
-  const [products, setProducts] = useState([])
+  const getItem = (response) => {
+      response = response.filter((element) => element.id === id);
+      return response
+  };
 
-  const getProducts = () => {
+  useEffect(
+      () => {
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(product)
-      }, 2000)
-    })
-  }
-
-  useEffect(() => {
-    getProducts()
-      .then((response) => {
-        setProducts(response)
-
-      })
-      .catch((err) => {
-      })
-      .finally(() => {
-      })
-  }, [])
-
+          let promiseItem = new Promise((resolve, reject) => {
+              setTimeout(
+                  () => {
+                      resolve(productsMock);
+                  },
+                  2000
+              )
+          });
+      
+          promiseItem
+          .then((response) => {setItem(getItem(response));})
+          .catch((error) => {console.log(error);})
+      
+      },
+      []
+  );
+  console.log(item)
+  
   return (
     <div className="general-container">
       <Container maxWidth="lg">
         <Grid container spacing={5}>
-          {/* <ItemList products={products}/> */}
-          <ItemDetailList products={products} />
+          {
+            item.map(
+              item => <ItemDetail key={item.id} item={item} />
+            )
+          
+          }
         </Grid>
       </Container>
     </div>
