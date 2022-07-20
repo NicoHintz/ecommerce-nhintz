@@ -5,10 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ItemCount from '../ItemCount';
-import Button from '@mui/material/Button';
 
-
-export default function Item({title, price, image, stock,}) {
+export default function Item({title, price, image, stock, description, category, id}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -27,10 +25,18 @@ export default function Item({title, price, image, stock,}) {
         <Typography variant="overline" display="block" color="text.secondary">
           Stock: {stock}
         </Typography>
+        <Typography variant="inherit" display="block" color="text.secondary">
+          Descripcion: {description}
+        </Typography>
+        <Typography variant="overline" display="block" color="text.secondary">
+          Categoria: {category}
+        </Typography>
+        <Typography variant="overline" display="block" color="text.secondary">
+          ID: {id}
+        </Typography>
       </CardContent>
       <CardActions>
         <ItemCount stock={stock}/>
-        <Button size="small">Mas Detalle</Button>
       </CardActions>
     </Card>
   );

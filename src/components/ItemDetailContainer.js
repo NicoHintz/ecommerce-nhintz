@@ -1,17 +1,19 @@
 import { Grid } from '@mui/material';
 import { useEffect, useState } from "react";
-import productos from '../utils/productsMock'
+import product from '../utils/DetailProductsMock'
 import Container from '@mui/material/Container';
-import ItemList from './ItemList';
-
+// import ItemList from './ItemList';
+import ItemDetailList from './Item/ItemDetail';
 
 const ItemListContainer = () => {
+
   const [products, setProducts] = useState([])
 
   const getProducts = () => {
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(productos)
+        resolve(product)
       }, 2000)
     })
   }
@@ -20,7 +22,7 @@ const ItemListContainer = () => {
     getProducts()
       .then((response) => {
         setProducts(response)
-        
+
       })
       .catch((err) => {
       })
@@ -32,12 +34,12 @@ const ItemListContainer = () => {
     <div className="general-container">
       <Container maxWidth="lg">
         <Grid container spacing={5}>
-          <ItemList products={products}/>
+          {/* <ItemList products={products}/> */}
+          <ItemDetailList products={products} />
         </Grid>
       </Container>
     </div>
   )
 
 }
-
 export default ItemListContainer
