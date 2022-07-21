@@ -8,6 +8,7 @@ const productos = [
         stock: 14,
         category: 'Fuerte',
         id: 1
+        
     },
     {
         title: 'Café Camboya fuerte',

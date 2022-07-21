@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = ({titulo}) => {
+const ResponsiveAppBar = ({ titulo }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -40,7 +40,7 @@ const ResponsiveAppBar = ({titulo}) => {
 
   return (
     <AppBar position="static">
-      
+
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -61,7 +61,7 @@ const ResponsiveAppBar = ({titulo}) => {
           >
             {titulo}
           </Typography>
-            
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -91,12 +91,14 @@ const ResponsiveAppBar = ({titulo}) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              
-                {/* <Link to={"/category/Fuerte"}> */}
+
+              <Link to={"/category/Fuerte"}>
                 <MenuItem onClick={handleCloseNavMenu}>
+
                   <Typography textAlign="center">Fuerte</Typography>
+
                 </MenuItem>
-                {/* </Link> */}
+              </Link>
 
             </Menu>
           </Box>
@@ -120,25 +122,44 @@ const ResponsiveAppBar = ({titulo}) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            
-              
-              {/* <Link to={"category/Suave"}> */}
+
+            <Link to={"category/fuerte"}>
               <Button
-                
+
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Fuerte
+              </Button>
+            </Link>
+
+            <Link to={"category/medio"}>
+              <Button
+
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Medio
+              </Button>
+            </Link>
+
+            <Link to={"category/suave"}>
+              <Button
+
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Suave
               </Button>
-              {/* </Link> */}
-            
+            </Link>
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <StyledBadge />
-                <AccountCircleIcon sx={{ ml: "2rem" } }/>
+                <AccountCircleIcon sx={{ ml: "2rem" }} />
               </IconButton>
             </Tooltip>
             <Menu
