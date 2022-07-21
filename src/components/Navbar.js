@@ -13,8 +13,10 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import StyledBadge from './CartWidget'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
 
-const pages = ['Productos', 'Sale', 'Nosotros'];
+
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = ({titulo}) => {
@@ -89,11 +91,13 @@ const ResponsiveAppBar = ({titulo}) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              
+                {/* <Link to={"/category/Fuerte"}> */}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Fuerte</Typography>
                 </MenuItem>
-              ))}
+                {/* </Link> */}
+
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -116,15 +120,18 @@ const ResponsiveAppBar = ({titulo}) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            
+              
+              {/* <Link to={"category/Suave"}> */}
               <Button
-                key={page}
+                
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                Suave
               </Button>
-            ))}
+              {/* </Link> */}
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

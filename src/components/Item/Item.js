@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ItemCount from '../ItemCount';
 import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom';
 
 
 export default function Item({title, price, image, stock,}) {
@@ -30,7 +31,9 @@ export default function Item({title, price, image, stock,}) {
       </CardContent>
       <CardActions>
         <ItemCount stock={stock}/>
-        <Button size="small">Mas Detalle</Button>
+        <Link to={"/detail"}>
+          <Button size="small">Mas Detalle</Button>
+        </Link>
       </CardActions>
     </Card>
   );
