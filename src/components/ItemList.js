@@ -14,6 +14,7 @@ const ItemList = ({products}) => {
               description={product.description}
               stock={product.stock}
               category={product.category}
+              id={product.id}
             />
           </Grid>
         )

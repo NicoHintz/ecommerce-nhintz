@@ -31,7 +31,7 @@ export default function Item({title, price, image, stock, id}) {
       </CardContent>
       <CardActions>
         <ItemCount stock={stock}/>
-        <Link to={`detail/${id}`}> 
+        <Link to={`item/${id}`}> 
           <Button size="small">Mas Detalle</Button>
         </Link>
       </CardActions>

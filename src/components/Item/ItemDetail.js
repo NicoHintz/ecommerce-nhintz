@@ -12,7 +12,7 @@ export default function Item({item}) {
       <CardMedia
         component="img"
         height="330"
-        image={item.image}
+        image={`/${item.image}`}
         alt={item.title}
       />
       <CardContent>
