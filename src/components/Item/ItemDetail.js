@@ -5,10 +5,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ItemCount from '../ItemCount';
+import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 export default function Item({item}) {
+  const { stock } = item
+  const [amount, setAmount] = useState(0);
+  const onAdd = (amount) => {
+    setAmount(amount);
+    
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 355 }}>
       <CardMedia
         component="img"
         height="330"
@@ -36,7 +44,17 @@ export default function Item({item}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <ItemCount stock={item.stock}/>
+        {amount === 0 ? (
+        <ItemCount stock={stock} initial={0} onAdd={onAdd} />
+      ) : (
+        <h1>{amount} items will be bought</h1>
+      )}
+      <div className="d-flex justify-content-center my-3">
+        <Link to="/cartWidget/">
+          <button className="btn btn-warning">Go to checkout</button>
+        </Link>
+      </div>
+        
       </CardActions>
     </Card>
   );
