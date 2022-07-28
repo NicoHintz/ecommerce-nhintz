@@ -5,14 +5,19 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ItemCount from '../ItemCount';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
+import { CartContext } from '../../contexts/CartContext';
+
 
 export default function Item({item}) {
+  const {setCartItems}= useContext(CartContext);
+  
   const { stock } = item
   const [amount, setAmount] = useState(0);
   const onAdd = (amount) => {
     setAmount(amount);
+    setCartItems((prevState) => [...prevState, item]);
     
   };
   return (
@@ -50,7 +55,7 @@ export default function Item({item}) {
         <h1>{amount} items will be bought</h1>
       )}
       <div className="d-flex justify-content-center my-3">
-        <Link to="/cartWidget/">
+        <Link to="/cart/">
           <button className="btn btn-warning">Go to checkout</button>
         </Link>
       </div>
