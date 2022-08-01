@@ -7,15 +7,17 @@ import Typography from '@mui/material/Typography';
 import ItemCount from '../ItemCount';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
-import { CartContext } from '../../contexts/CartContext';
+// import CartContext from '../../contexts/CartContext';
+import { GContext } from '../../contexts/CartContext';
 
 
 export default function Item({item}) {
-  const {setCartItems}= useContext(CartContext);
+  const {setCartItems}= useContext(GContext);
   
   const { stock } = item
   const [amount, setAmount] = useState(0);
   const onAdd = (amount) => {
+    
     setAmount(amount);
     setCartItems((prevState) => [...prevState, item]);
     

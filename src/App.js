@@ -4,7 +4,7 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemDetail from './components/ItemDetailContainer';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import CartProvider from "./contexts/CartContext";
+import CartContext from './contexts/CartContext';
 import Cart from './components/Cart';
 
 
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <CartProvider>
+      <CartContext>
         <BrowserRouter>
           <Navbar titulo={title} />
           <Link to={"category/suave"}></Link>
@@ -28,7 +28,7 @@ function App() {
           {/* <ItemListContainer greeting = {"New arrivals"} /> */}
           {/* <ItemDetailContainer  /> */}
         </BrowserRouter>
-      </CartProvider>
+      </CartContext>
     </>
   );
 }

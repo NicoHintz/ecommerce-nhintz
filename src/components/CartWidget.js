@@ -4,7 +4,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+// import CartContext from '../contexts/CartContext';
+import { GContext } from '../contexts/CartContext';
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -17,13 +18,17 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function CustomizedBadges() {
-  const { cartItems } = useContext(CartContext);
+  // const { cartItems } = useContext(CartContext);
+  const { itemsCarrito } = useContext(GContext);
   return (
-    <IconButton aria-label="cart">
-      <StyledBadge badgeContent={cartItems.length} color="secondary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
-  );
+    
+        <IconButton aria-label="cart">
+          <StyledBadge badgeContent={itemsCarrito.length} color="secondary">
+            <ShoppingCartIcon />
+          </StyledBadge>
+        </IconButton>
+      )
+    
+  ;
 }
 

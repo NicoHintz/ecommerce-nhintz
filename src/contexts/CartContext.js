@@ -1,16 +1,41 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
+export const GContext = createContext();
 
-export const CartContext = createContext();
+const CartContext = ({ children }) => {
+  const [itemsCarrito, setItemCarrito] = useState([]);
 
-const CartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
-  // const isInCart = (id) => cartItems.find(product => product.id === id) ? true : false;
+  const addItem = (item, quantity) => {
+    const newItem = isInCart(item);
+    if (newItem) {
+      quantity = quantity + newItem.quantity;
+      setItemCarrito(
+        itemsCarrito.splice(
+          itemsCarrito.findIndex((element) => element.item.id === item.id),
+          1
+        )
+      );
+    }
+    setItemCarrito([...itemsCarrito, { item, quantity }]);
+  };
 
-  return (
-    <CartContext.Provider value={{ cartItems, setCartItems }}>
-      {props.children}
-    </CartContext.Provider>
-  );
+  const isInCart = (item) => {
+    return itemsCarrito.find((element) => element.item === item);
+  };
+
+  const clear = () => {
+    setItemCarrito([]);
+  };
+  const removeItem = (itemId) => {
+    setItemCarrito(itemsCarrito.filter((element) => element.item.id !== itemId));
+  };
+
+  const total = () => {
+    return itemsCarrito.reduce(
+      (valorAnterior, valorActual) => valorAnterior + valorActual.item.price * valorActual.quantity,
+      0
+    );
+  };
+  return <GContext.Provider value={{ itemsCarrito, addItem, removeItem, clear, total }}>{children}</GContext.Provider>;
 };
 
-export default CartProvider;
+export default CartContext;
