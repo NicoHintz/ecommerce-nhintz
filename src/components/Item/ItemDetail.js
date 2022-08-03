@@ -12,15 +12,26 @@ import { GContext } from '../../contexts/CartContext';
 
 
 export default function Item({item}) {
-  const {setCartItems}= useContext(GContext);
-  
   const { stock } = item
+  
+  const { isInCart, addItem }= useContext(GContext);
+
   const [amount, setAmount] = useState(0);
+  
   const onAdd = (amount) => {
-    
-    setAmount(amount);
-    setCartItems((prevState) => [...prevState, item]);
-    
+    if(!isInCart(item.id)){
+      setAmount(amount);
+      item ={
+        'id': item.id,
+        'amount': amount,
+        'title':item.title,
+        'price': item.price,
+        'subtotal': parseInt(amount) * parseInt(item.price)
+      }
+      addItem(item, amount)
+    }else{
+      alert('Ya existe el item');
+    }
   };
   return (
     <Card sx={{ maxWidth: 355 }}>
@@ -66,3 +77,61 @@ export default function Item({item}) {
     </Card>
   );
 }
+
+
+
+
+// export default function Item({item}) {
+//   const {addItem}= useContext(GContext);
+//   const { stock } = item
+//   const [amount, setAmount] = useState(0);
+//   const onAdd = (amount) => {
+//     addItem(item, amount)
+//     setAmount(amount);
+//     // setCartItems((prevState) => [...prevState, item]);
+    
+//   };
+//   return (
+//     <Card sx={{ maxWidth: 355 }}>
+//       <CardMedia
+//         component="img"
+//         height="330"
+//         image={`/${item.image}`}
+//         alt={item.title}
+//       />
+//       <CardContent>
+//       <Typography gutterBottom variant="h5" component="div">
+//           {item.title}
+//         </Typography>
+//         <Typography variant="overline" display="block" color="text.secondary">
+//           Precio: {item.price}
+//         </Typography>
+//         <Typography variant="overline" display="block" color="text.secondary">
+//           Stock: {item.stock}
+//         </Typography>
+//         <Typography variant="inherit" display="block" color="text.secondary">
+//           Descripcion: {item.description}
+//         </Typography>
+//         <Typography variant="overline" display="block" color="text.secondary">
+//           Categoria: {item.category}
+//         </Typography>
+//         <Typography variant="overline" display="block" color="text.secondary">
+//           ID: {item.id}
+//         </Typography>
+//       </CardContent>
+//       <CardActions>
+//         {amount === 0 ? (
+//         <ItemCount stock={stock} initial={0} onAdd={onAdd} />
+//       ) : (
+//         <h1>{amount} items will be bought</h1>
+//       )}
+//       <div className="d-flex justify-content-center my-3">
+//         <Link to="/cart/">
+//           <button className="btn btn-warning">Go to checkout</button>
+//         </Link>
+//       </div>
+        
+//       </CardActions>
+//     </Card>
+//   );
+// }

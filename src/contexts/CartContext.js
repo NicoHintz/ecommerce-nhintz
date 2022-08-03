@@ -3,19 +3,11 @@ export const GContext = createContext();
 
 const CartContext = ({ children }) => {
   const [itemsCarrito, setItemCarrito] = useState([]);
+  const [countItems, setCountItems] = useState([]);
 
   const addItem = (item, quantity) => {
-    const newItem = isInCart(item);
-    if (newItem) {
-      quantity = quantity + newItem.quantity;
-      setItemCarrito(
-        itemsCarrito.splice(
-          itemsCarrito.findIndex((element) => element.item.id === item.id),
-          1
-        )
-      );
-    }
-    setItemCarrito([...itemsCarrito, { item, quantity }]);
+    setItemCarrito(prevState=> [...prevState, item])
+    setCountItems(countItems + quantity);
   };
 
   const isInCart = (item) => {
@@ -24,18 +16,52 @@ const CartContext = ({ children }) => {
 
   const clear = () => {
     setItemCarrito([]);
+    setCountItems(0)
   };
   const removeItem = (itemId) => {
-    setItemCarrito(itemsCarrito.filter((element) => element.item.id !== itemId));
+    setItemCarrito(itemsCarrito.filter((element) => element.id !== itemId));
   };
 
-  const total = () => {
-    return itemsCarrito.reduce(
-      (valorAnterior, valorActual) => valorAnterior + valorActual.item.price * valorActual.quantity,
-      0
-    );
-  };
-  return <GContext.Provider value={{ itemsCarrito, addItem, removeItem, clear, total }}>{children}</GContext.Provider>;
+  return <GContext.Provider value={{ itemsCarrito, countItems, addItem, removeItem, clear, isInCart }}>{children}</GContext.Provider>;
 };
 
 export default CartContext;
+
+
+
+  
+//   const addItem = (item, quantity) => {
+//     const newItem = isInCart(item);
+//     if (newItem) {
+//       quantity = quantity + newItem.quantity;
+//       setItemCarrito(
+//         itemsCarrito.splice(
+//           itemsCarrito.findIndex((item) => item.item.id === item.id),
+//           1
+//         )
+//       );
+//     }
+//     setItemCarrito([...itemsCarrito, { item, quantity }]);
+//   };
+
+//   const isInCart = (item) => {
+//     return itemsCarrito.find((item) => item.item === item);
+//   };
+
+//   const clear = () => {
+//     setItemCarrito([]);
+//   };
+//   const removeItem = (itemId) => {
+//     setItemCarrito(itemsCarrito.filter((item) => item.item.id !== itemId));
+//   };
+
+//   const total = () => {
+//     return itemsCarrito.reduce(
+//       (valorAnterior, valorActual) => valorAnterior + valorActual.item.price * valorActual.quantity,
+//       0
+//     );
+//   };
+//   return <GContext.Provider value={{ itemsCarrito, addItem, removeItem, clear, total }}>{children}</GContext.Provider>;
+// };
+
+// export default CartContext;
