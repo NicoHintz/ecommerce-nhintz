@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GContext } from "../contexts/CartContext";
 import CartItem from "./CartItem";
+import sendOrder from "../contexts/CartContext";
+
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -29,6 +31,13 @@ const Cart = () => {
             Vaciar carrito
           </button>
           <h1>El total de la compra es de : ${totalPrice}</h1>
+          <button
+          onClick={() => sendOrder(totalPrice)}
+          type="submit"
+          className="btn btn-info"
+        >
+          Send order
+        </button>
         </>
       )}
     </>

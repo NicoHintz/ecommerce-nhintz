@@ -8,11 +8,15 @@ import CartContext from './contexts/CartContext';
 import Cart from './components/Cart';
 
 
+
 function App() {
+
   const title = "Cafe";
 
   return (
+    //JSX
     <>
+    <div className="App">
       <CartContext>
         <BrowserRouter>
           <Navbar titulo={title} />
@@ -29,6 +33,7 @@ function App() {
           {/* <ItemDetailContainer  /> */}
         </BrowserRouter>
       </CartContext>
+      </div>
     </>
   );
 }
