@@ -17,7 +17,7 @@ const CartContext = ({ children }) => {
     addDoc(orderCollection, order)
     .then((res) => console.log(res.id))
     .catch((err) => console.log("error", err));
-  }
+  };
     
 
   const addItem = (item, quantity) => {
