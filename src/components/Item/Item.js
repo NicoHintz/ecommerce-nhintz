@@ -11,7 +11,7 @@ import {Link} from 'react-router-dom';
 
 export default function Item({title, price, image, stock, id}) {
   return (
-    <Card sx={{ maxWidth: 355 }}>
+    <Card  sx={{ maxWidth: 355 }}>
       <CardMedia
         component="img"
         height="340"

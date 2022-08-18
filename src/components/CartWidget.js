@@ -23,7 +23,7 @@ export default function CustomizedBadges() {
   return (
     
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={itemsCarrito.length} color="secondary">
+          <StyledBadge badgeContent={itemsCarrito.length} className = "cart">
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton>

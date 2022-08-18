@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { initializeApp } from "firebase/app";
+// import { ThemeProvider } from '@mui/material/styles';
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCxNKh4Nv6Pj7p1nG4uDQmkDqPudfsZ4Tc",

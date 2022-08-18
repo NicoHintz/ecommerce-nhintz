@@ -1,0 +1,50 @@
+.card-item img{
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+
+}
+
+.card-item{
+display: flex;
+flex-direction: column;
+width: 100%;
+box-shadow: rgb(250, 248, 248);
+flex-grow: inherit;
+box-shadow: 20px rgb(249, 246, 246);
+
+}
+
+.card-item p {
+font-size: 18px;
+font-weight: 700;
+margin-top: 10px;
+margin-bottom: 16px;  
+
+}
+
+.card-item span {
+margin-bottom: 10px;
+font-size: 16px;
+}
+
+.count-item {
+display: flex;
+width: 100%;
+justify-content: center;
+border-top: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
+margin-bottom: 10px;
+}
+
+.btn-custom-card button{
+background: black;
+border-radius: 40px;
+text-transform: none;
+color: white;
+font-family: 'Lato';
+padding: 10px 20px;
+margin-top: 15px;
+font-size: 14px;
+text-decoration-color: white;
+}
