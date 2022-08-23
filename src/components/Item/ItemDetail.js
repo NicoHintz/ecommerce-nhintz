@@ -9,6 +9,7 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 // import CartContext from '../../contexts/CartContext';
 import { GContext } from '../../contexts/CartContext';
+import Container from '@mui/material/Container';
 
 
 export default function Item({item}) {
@@ -34,11 +35,13 @@ export default function Item({item}) {
     }
   };
   return (
-    <Card sx={{ maxWidth: 355 }}>
+    <div className="general-container">
+      <Container maxWidth="lg">
+    <Card className='item-detail' sx={{ maxWidth: 400, }}>
       <CardMedia
         component="img"
-        height="330"
-        image={`/${item.image}`}
+        height="300"
+        image={`${item.image}`}
         alt={item.title}
       />
       <CardContent>
@@ -75,6 +78,8 @@ export default function Item({item}) {
         
       </CardActions>
     </Card>
+    </Container>
+    </div>
   );
 }
 

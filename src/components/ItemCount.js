@@ -19,7 +19,7 @@ const ItemCount = ({ stock = 2, initial = 0, onAdd }) => {
   };
   return (
     <>
-      <div className="input-group input-spinner mb-3 d-flex justify-content-center">
+      <div className="input-group input-spinner mb-3 d-flex justify-content-center" >
         <input
           onChange={(e) => updateCountInput(e)}
           className="border-primary"

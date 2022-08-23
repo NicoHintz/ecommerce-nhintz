@@ -104,26 +104,14 @@
   justify-content: space-between;
   
 }
-.cart-footer button {/* background: black; */}
 
-.cart-checkout-details button {
-  background: black;
-  border-radius: 40px;
-  text-transform: none;
-  color: white;
-  font-family: 'Lato';
-  padding: 10px 20px;
-  margin-top: 15px;
-  font-size: 14px;}
 
-  .pagina-de-contacto {
-    display: grid;
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px;
-}
 
-.pagina-de-contacto h1 {
-  text-decoration: underline;
+.font{
+  
+  color: rgb(188, 179, 52);
+  font-size: 20px;
+  font-family: cursive; 
+  
   
 }

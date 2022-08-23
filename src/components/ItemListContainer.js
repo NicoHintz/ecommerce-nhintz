@@ -20,7 +20,8 @@ const ItemListContainer = () => {
     getDocs(itemsCollection).then((snapshot) => {
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       if (name) {
-        setProducts(data.filter(productos => productos.category.toLowerCase() === name));
+        setProducts(data.filter(productos => productos.category.toLowerCase() === name.toLowerCase()));
+        setLoading(false);
       } else {
         setProducts(data);
         setLoading(false);
@@ -45,44 +46,4 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
-//   const getProducts = () => {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         resolve(productos)
-//       }, 2000)
-//     })
-//   }
 
-//   useEffect(() => {
-
-//
-//     getProducts()
-//       .then((response) => {
-//         if (name) {
-//           setProducts(response.filter(productos => productos.category.toLowerCase() === name));
-
-//         } else {
-//           setProducts(response)
-//         }
-
-
-//       })
-//       .catch((err) => {
-//       })
-//       .finally(() => {
-//       })
-//   }, [name])
-
-//   return (
-//     <div className="general-container">
-//       <Container maxWidth="lg">
-//         <Grid container spacing={5}>
-//           <ItemList products={products} />
-//         </Grid>
-//       </Container>
-//     </div>
-//   )
-
-// }
-
-// export default ItemListContainer
