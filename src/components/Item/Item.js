@@ -4,9 +4,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ItemCount from '../ItemCount';
+// import ItemCount from '../ItemCount';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
+
 
 
 export default function Item({title, price, image, stock, id}) {
@@ -28,9 +29,10 @@ export default function Item({title, price, image, stock, id}) {
         
       </CardContent>
       <CardActions>
-        <ItemCount stock={stock}/>
-        <Link to={`item/${id}`}> 
-          <Button size="small">Ver Más</Button>
+        <Link to={`/item/${id}`}> 
+        <div className='navbar'>
+          <Button disableRipple style={{ backgroundColor: 'black' }} variant='contained' size="small" textAlign='center' >Ver Más</Button>
+        </div>
         </Link>
       </CardActions>
     </Card>
